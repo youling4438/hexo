@@ -153,6 +153,124 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript中的继承方法总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/12/javascript中的继承方法总结/">javascript中的继承方法总结</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/12/javascript中的继承方法总结/" class="archive-article-date">
+  	<time datetime="2018-03-12T02:15:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近学习了js中的OOP(面向对象编程)思想，OOP中的三大特性分别是 <strong>封装</strong>、<strong>继承</strong>、<strong>多态</strong> 。今天先总结一下 <strong>继承</strong> 的一些方法。</p>
+<p>在js中继承分为 <strong>构造函数继承</strong> 和 <strong>非构造函数继承</strong> 两种模式。为了方便理解继承，我们需要用到两个完成封装的类，<code>father</code>和<code>son</code>分别如下：<br>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">father</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.lastName = <span class="string">"张"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">son</span>(<span class="params">name,hobbies</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.firstName = name;</span><br><span class="line">  <span class="keyword">this</span>.hobbies = hobbies;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h3><p>1.构造函数绑定</p>
+<p>  这个方法是最简单的，直接在子类身上 <em>绑定</em> 父类的构造函数即可。那么如何实现 <em>绑定</em> 这一操作呢？</p>
+<p>  在js中的每一个<code>function</code>对象都有两个方法:<code>apply()</code>和<code>call()</code>，这两个方法的第一个参数指的是方法内部的<code>this</code>指向那个对象。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//子类修改如下即可</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">son</span>(<span class="params">name,hobbies</span>)</span>&#123;</span><br><span class="line">  father.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);<span class="comment">//this指向son，实现绑定</span></span><br><span class="line">  <span class="keyword">this</span>.firstName = name;</span><br><span class="line">  <span class="keyword">this</span>.hobbies = hobbies;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  上面的实例中<code>son</code>对象继承了<code>father</code>对象，<code>son</code>的实例化对象拥有<code>lastName</code>这个属性，如下：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> son(<span class="string">"琦"</span>,[<span class="string">"music"</span>,<span class="string">"CSS3"</span>,<span class="string">"poetry"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s.lastName); <span class="comment">//"张"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>So easy!!!</strong></p>
+</blockquote>
+<p>2.<code>prototype</code>模式</p>
+<p>  把父类的<strong>实例化对象</strong>赋值给子类的<code>prototype</code>属性,也可以实现子类对父类的继承。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">son.prototype = <span class="keyword">new</span> father(); <span class="comment">//实现继承</span></span><br><span class="line">son.prototype.constructor = son; <span class="comment">//修改子类constructor属性的指向</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> son(<span class="string">"琦"</span>,[<span class="string">"music"</span>,<span class="string">"CSS3"</span>,<span class="string">"poetry"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s.lastName);<span class="comment">//"张"</span></span><br></pre></td></tr></table></figure>
+<p>  上面代码<code>son.prototype = new father()</code>的作用就是让子类的prototype指向父类的实例，已实现继承，但需要注意一下两点：</p>
+<p>  1.<code>prototype</code>对象的<code>constructor</code>默认指向其构造函数，也就是说<code>son</code>类prototype对象的constructor属性应该是<code>son</code>的构造函数，但执行第一行代码后<code>son</code>的prototype对象被替换成<code>father</code>的prototype对象，这时<code>son.prototype.construnctor == father; //true</code></p>
+<p>  2.基于某个类的实例化对象也有<code>constructor</code>属性，默认指向该类的<code>prototype</code>对象的<code>constructor</code>属性，意味着基于<code>son</code>类实例化的对象s的constructor属性指向<code>son</code>类prototype对象的constructor属性，先不要晕，代码阐述可能更直观<code>s.constructor == son.protopyte.constructor; //true</code>。</p>
+<p>  综合以上两点我们可以得到一个结论，执行第一行代码实现继承之后产生了继承链的紊乱，<code>s.constructor ==&gt; son.protopyte.constructor ==&gt; father</code>,因此我们需要下面这一行代码<code>son.prototype.constructor = son</code>。通俗地讲，一但某个类的<code>prototype</code>对象被修改了，一定要把该类<code>prototype</code>对象的<code>constructor</code>属性指向该类自身。In a word，不要怂，所有问题我们都会有办法解决的。</p>
+<p>3.直接继承<code>prototype</code></p>
+<p>  第二种实现继承的方法产生了基于<code>father</code>类的实例化对象，使得执行效率较低，且内存消耗较大，我们稍微做一些改进，直接把父类的<code>prototype</code>对象赋值给子类的<code>prototype</code>对象，当然我们同时需要把子类想要继承的属性写到父类<code>prototype</code>对象身上，如下所示:</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类对象改写如下</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">father</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// this.lastName = "张";//子类想继承的属性改写到父类自身的prototype对象上</span></span><br><span class="line">&#125;</span><br><span class="line">father.prototype.lastName = <span class="string">"张"</span>;</span><br></pre></td></tr></table></figure>
+<p>  这时，我们继承的方法就修改成下面这样：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">son.prototype = father.prototype; <span class="comment">//实现继承</span></span><br><span class="line">son.prototype.constructor = son; <span class="comment">//修改子类constructor属性的指向</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> son(<span class="string">"琦"</span>,[<span class="string">"music"</span>,<span class="string">"CSS3"</span>,<span class="string">"poetry"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s.lastName);<span class="comment">//"张"</span></span><br></pre></td></tr></table></figure>
+<p>  改进后的方法没有产生新的实例化对象，执行效率更高，内存浪费更少。这个方法似乎很完美，没毛病。But如果我们修改了子类<code>prototype</code>对象的属性时<code>son.prototype.constructor = son</code>，父类相应的属性也会被修改掉<code>father.prototype.constructor = son; \\true</code>，why?和我一样细心的你可能已经发现其中的猫腻了，<code>son.prototype = father.prototype</code>这行代码是浅度拷贝，把<code>son.prototype</code>对象与<code>father.prototype</code>对象指向同一物理内存地址，因此我们修改son.prototype对象的属性时会反射到father.prototype身上。 </p>
+<p>  这个方法实现继承有点瑕疵，但只要解决了浅度拷贝的弊端，我们的问题也就迎刃而解。</p>
+<p>4.利用空对象作为中介</p>
+<p>  空对象对内存消耗非常少，因此我们可以用一个空对象夹在father.prototype和son.prototype之间，这样就解决了浅度拷贝的问题，继承方法修改如下：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> middleman = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">middleman.prototype = father.prototype;</span><br><span class="line">son.prototype = <span class="keyword">new</span> middleman(); <span class="comment">//实现继承</span></span><br><span class="line">son.prototype.constructor = son; <span class="comment">//修改子类constructor属性的指向</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> son(<span class="string">"琦"</span>,[<span class="string">"music"</span>,<span class="string">"CSS3"</span>,<span class="string">"poetry"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s.lastName);<span class="comment">//"张"</span></span><br></pre></td></tr></table></figure>
+<p>  在上面的继承方法中空对象<code>new middleman()</code>作为中介带着<code>father</code>类的prototype对象，赋值给<code>son</code>类的prototype对象实现了继承，然后对<code>son.prototype</code>的修改不会反射到<code>father.prototype</code>对象身上，完美！！！</p>
+<blockquote>
+<p><strong>总结一下，方法2,3,4实现继承其实都是在想方设法的把<code>father.prototype</code>对象的值赋给<code>son.prototype</code>对象</strong></p>
+</blockquote>
+<p>5.遍历父类<code>prototype</code>对象</p>
+<p>  承接上文，既然只要把父类<code>prototype</code>对象的值给子类<code>prototype</code>对象就可以实现继承，那我们的方法又可以改写成下面这样：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fObj = father.prototype;</span><br><span class="line"><span class="keyword">var</span> sObj = son.prototype;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> fObj)&#123; <span class="comment">//遍历父类prototype对象</span></span><br><span class="line">  sObj[key] = fObj[key]; <span class="comment">//赋值，完成继承</span></span><br><span class="line">&#125;</span><br><span class="line">son.prototype.constructor = son; <span class="comment">//修改子类constructor属性的指向</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> son(<span class="string">"琦"</span>,[<span class="string">"music"</span>,<span class="string">"CSS3"</span>,<span class="string">"poetry"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s.lastName);<span class="comment">//"张"</span></span><br></pre></td></tr></table></figure>
+<p>  很好，使用<code>in</code>操作符遍历<code>father.prototype</code>对象，赋值实现继承，如果改成<code>Object.keys()</code>来遍历对象，我们的方法又会修改成下面这样：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fObj = father.prototype;</span><br><span class="line"><span class="keyword">var</span> fObjKeys = <span class="built_in">Object</span>.keys(fObj);</span><br><span class="line"><span class="keyword">var</span> sObj = son.prototype;</span><br><span class="line"><span class="keyword">var</span> length = fObjKeys.length;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">  sObj[fObjKeys[i]] = fObj[fObjKeys[i]];</span><br><span class="line">&#125;</span><br><span class="line">son.prototype.constructor = son; <span class="comment">//修改子类constructor属性的指向</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> son(<span class="string">"琦"</span>,[<span class="string">"music"</span>,<span class="string">"CSS3"</span>,<span class="string">"poetry"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s.lastName);<span class="comment">//"张"</span></span><br></pre></td></tr></table></figure>
+<p>  当然，还有其他遍历对象的方法，我就不一一列举了。</p>
+<h3 id="非构造函数模式"><a href="#非构造函数模式" class="headerlink" title="非构造函数模式"></a>非构造函数模式</h3><p>1.object()方法</p>
+<p>2.shallowCopy</p>
+<p>3.deepCopy</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/12/javascript中的继承方法总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-我博客的第一篇文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -187,15 +305,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -208,10 +330,6 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -419,15 +537,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -443,11 +565,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">OOP</a>
               </li>
             
             <div class="clearfix"></div>
