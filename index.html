@@ -153,6 +153,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript-encapsulation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/13/javascript-encapsulation/">javascript中的封装方法演变史</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/13/javascript-encapsulation/" class="archive-article-date">
+  	<time datetime="2018-03-13T12:35:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天写了<strong><a href="/2018/03/12/javascript-inherit/">继承</a></strong>，今天总结一下<strong>封装</strong>的一些相关知识。</p>
+<h3 id="1-先看一下什么是封装？"><a href="#1-先看一下什么是封装？" class="headerlink" title="1.先看一下什么是封装？"></a>1.先看一下什么是封装？</h3><p>我理解的封装就是把不同的属性和方法放入一个对象(或者叫抽象类)的过程。比如下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个是码农对象</span></span><br><span class="line"><span class="keyword">let</span> codingPeasant = &#123;</span><br><span class="line">    <span class="comment">//技能包</span></span><br><span class="line">    <span class="string">'skill'</span> : [] </span><br><span class="line">    <span class="comment">//职位</span></span><br><span class="line">    <span class="string">'job'</span> : <span class="string">''</span>, </span><br><span class="line">    <span class="string">'feature'</span> : [<span class="string">'加班多'</span>,<span class="string">'压力大'</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>像上面这样拥有<code>skill</code>、<code>job</code>、<code>feature</code>三个属性的对象就是我们封装好的一个对象，即码农对象。我们可以基于这个对象实例化出好多不同的对象，比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前端</span></span><br><span class="line"><span class="keyword">let</span> cP1 = &#123;&#125;;</span><br><span class="line">cP1.skill = [<span class="string">'js'</span>,<span class="string">'css'</span>]; </span><br><span class="line">cP1.job = <span class="string">'frontEndDev'</span>; </span><br><span class="line">cP1.feature = [<span class="string">'加班多'</span>,<span class="string">'压力大'</span>]; </span><br><span class="line"><span class="comment">//后端</span></span><br><span class="line"><span class="keyword">let</span> cP2 = &#123;&#125;;</span><br><span class="line">cP2.skill = [<span class="string">'java'</span>]; </span><br><span class="line">cP2.job = <span class="string">'backEndDev'</span>; </span><br><span class="line">cP2.feature = [<span class="string">'加班多'</span>,<span class="string">'压力大'</span>];</span><br></pre></td></tr></table></figure>
+<p>理论上我们已经基于codingPeasant对象实例化了cP1和cP2两个对象，但是如果要实例化多个对象，这样的写法就显得啰嗦，代码行数太多，而且目前我无法判断cP1与cP2之间的内在联系。</p>
+<h3 id="2-提一个方法，批量生产"><a href="#2-提一个方法，批量生产" class="headerlink" title="2.提一个方法，批量生产"></a>2.提一个方法，批量生产</h3><p>改写封装的格式，提出一个方法来，可以明显减少代码行数，比如这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">codingPeasant</span>(<span class="params">skill,job,feature</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">'skill'</span>: skill,</span><br><span class="line">        <span class="string">'job'</span>: job,</span><br><span class="line">        <span class="string">'feature'</span>: feature,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//前端</span></span><br><span class="line"><span class="keyword">let</span> cP1 = codingPeasant([<span class="string">'js'</span>,<span class="string">'css'</span>],<span class="string">'frontEndDev'</span>,[<span class="string">'加班多'</span>,<span class="string">'压力大'</span>]);</span><br><span class="line"><span class="comment">//后端</span></span><br><span class="line"><span class="keyword">let</span> cP2 = codingPeasant([<span class="string">'java'</span>],<span class="string">'backEndDev'</span>,[<span class="string">'加班多'</span>,<span class="string">'压力大'</span>]);</span><br></pre></td></tr></table></figure>
+<p>这样一来代码量明显下降了，直观上来看cP1和cP2是从一个方法实例化出来的，但还是无法判断他们之间的内在联系。</p>
+<h3 id="3-JS构造函数的产生"><a href="#3-JS构造函数的产生" class="headerlink" title="3.JS构造函数的产生"></a>3.JS构造函数的产生</h3><p>为了解决上面提出的问题，javascript将普通<code>function</code>进行改造，在普通方法内引入了<code>this</code>变量，<code>new</code>一下改进后的方法就产生新的实例化对象，并且<code>this</code>指向了这个实例化对象，改造后的方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法内的this指向实例化对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">codingPeasant</span>(<span class="params">skill,job,feature</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.skill = skill,</span><br><span class="line">    <span class="keyword">this</span>.job = job,</span><br><span class="line">    <span class="keyword">this</span>.feature = feature,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//前端</span></span><br><span class="line"><span class="keyword">let</span> cP1 = codingPeasant([<span class="string">'js'</span>,<span class="string">'css'</span>],<span class="string">'frontEndDev'</span>,[<span class="string">'加班多'</span>,<span class="string">'压力大'</span>]);</span><br><span class="line"><span class="comment">//后端</span></span><br><span class="line"><span class="keyword">let</span> cP2 = codingPeasant([<span class="string">'java'</span>],<span class="string">'backEndDev'</span>,[<span class="string">'加班多'</span>,<span class="string">'压力大'</span>]);</span><br></pre></td></tr></table></figure>
+<p>像上面那样进行封装的<code>function</code>就叫<strong>构造函数</strong>。使用构造函数实例化的对象都有一个<code>constructor</code>属性，指向构造函数本身，比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(cP1.constructor); <span class="comment">//codingPeasant</span></span><br><span class="line"><span class="built_in">console</span>.log(cP2.constructor); <span class="comment">//codingPeasant</span></span><br></pre></td></tr></table></figure>
+<p>这样我们就可以判断出cP1和cP2是由同一个构造函数实例化得到的，问题总算是解决了。但是仔细观察就会发现<code>codingPeasant</code>的<code>feature</code>属性值一直没有变，都是<code>[&#39;加班多&#39;,&#39;压力大&#39;]</code>，一直不变的量没有必要每次实例化都要赋值一次，能不能干脆写死，不用每次都赋值，这样也能提升效率，而且<code>cP1.feature == cP2.feature; //false</code>,这意味着两个完全相同的值占据者不同的存储空间，明显造成了<strong>内存浪费</strong>。</p>
+<h3 id="4-prototype的产生"><a href="#4-prototype的产生" class="headerlink" title="4.prototype的产生"></a>4.<code>prototype</code>的产生</h3><p>为了解决上面提到的内存浪费，执行效率等问题，JavaScript在构造函数中引入了<code>prototype</code>属性，该属性指向一个第三方对象，且第三方对象的所有属性和方法都会被构造函数的实例化对象所继承。这样就可以把那些一直不变的属性绑定到这个第三方对象上，减少构造函数内部的代码量，实例化时执行效率升高，同时减少对内存的消耗，示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//把feature绑定到构造函数的prototype对象上</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">codingPeasant</span>(<span class="params">skill,job</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.skill = skill,</span><br><span class="line">    <span class="keyword">this</span>.job = job,</span><br><span class="line">&#125;;</span><br><span class="line">codingPeasant.prototype.feature = [<span class="string">'加班多'</span>,<span class="string">'压力大'</span>];</span><br><span class="line"><span class="comment">//前端</span></span><br><span class="line"><span class="keyword">let</span> cP1 = codingPeasant([<span class="string">'js'</span>,<span class="string">'css'</span>],<span class="string">'frontEndDev'</span>);</span><br><span class="line"><span class="comment">//后端</span></span><br><span class="line"><span class="keyword">let</span> cP2 = codingPeasant([<span class="string">'java'</span>],<span class="string">'backEndDev'</span>);</span><br></pre></td></tr></table></figure>
+<p>此时<code>cP1.feature == cP2.feature; //true</code>,因为<code>feature</code>都存储到<code>prototype</code>对象上，内存节省了，执行效率也提高了，完美！！！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/13/javascript-encapsulation/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-javascript-inherit" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -173,7 +267,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近学习了js中的OOP(面向对象编程)思想，OOP中的三大特性分别是 <strong>封装</strong>、<strong>继承</strong>、<strong>多态</strong> 。今天先总结一下 <strong>继承</strong> 的一些方法。</p>
+        <p>最近学习了js中的OOP(面向对象编程)思想，OOP中的三大特性分别是 <strong><a href="/2018/03/13/javascript-encapsulation/">封装</a></strong>、<strong>继承</strong>、<strong>多态</strong> 。今天先总结一下 <strong>继承</strong> 的一些方法。</p>
 <p>在js中继承分为 <strong>构造函数继承</strong> 和 <strong>非构造函数继承</strong> 两种模式。为了方便理解继承，我们需要用到两个完成封装的类，<code>father</code>和<code>son</code>分别如下：<br>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">father</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.lastName = <span class="string">"张"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">son</span>(<span class="params">name,hobbies</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.firstName = name;</span><br><span class="line">  <span class="keyword">this</span>.hobbies = hobbies;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h2><h3 id="1-构造函数绑定"><a href="#1-构造函数绑定" class="headerlink" title="1.构造函数绑定"></a>1.构造函数绑定</h3><p>  这个方法是最简单的，直接在子类身上 <em>绑定</em> 父类的构造函数即可。那么如何实现 <em>绑定</em> 这一操作呢？</p>
 <p>  在js中的每一个<code>function</code>对象都有两个方法:<code>apply()</code>和<code>call()</code>，这两个方法的第一个参数指的是方法内部的<code>this</code>指向那个对象。</p>
@@ -185,7 +279,7 @@
 </blockquote>
 <h3 id="2-prototype模式"><a href="#2-prototype模式" class="headerlink" title="2.prototype模式"></a>2.<code>prototype</code>模式</h3><p>  把父类的<strong>实例化对象</strong>赋值给子类的<code>prototype</code>属性,也可以实现子类对父类的继承。</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">son.prototype = <span class="keyword">new</span> father(); <span class="comment">//实现继承</span></span><br><span class="line">son.prototype.constructor = son; <span class="comment">//修改子类constructor属性的指向</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> son(<span class="string">"琦"</span>,[<span class="string">"music"</span>,<span class="string">"CSS3"</span>,<span class="string">"poetry"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s.lastName);<span class="comment">//"张"</span></span><br></pre></td></tr></table></figure>
-<p>  上面代码<code>son.prototype = new father()</code>的作用就是让子类的prototype指向父类的实例，已实现继承，但需要注意一下两点：</p>
+<p>  上面代码<code>son.prototype = new father()</code>的作用就是让子类的prototype指向父类的实例，已实现继承，但需要注意以下两点：</p>
 <blockquote>
 <p>1.<code>prototype</code>对象的<code>constructor</code>默认指向其构造函数，也就是说<code>son</code>类prototype对象的constructor属性应该是<code>son</code>的构造函数，但执行第一行代码后<code>son</code>的prototype对象被替换成<code>father</code>的prototype对象，这时<code>son.prototype.construnctor == father; //true</code></p>
 </blockquote>
@@ -220,8 +314,7 @@
 <p>  通过上述操作，我们就让<code>frontEndDev</code>对象继承了<code>codingPeasant</code>对象的属性，<strong>稳</strong>！</p>
 <h3 id="2-shallowCopy方法"><a href="#2-shallowCopy方法" class="headerlink" title="2.shallowCopy方法"></a>2.<code>shallowCopy</code>方法</h3><p>  我们继承的目的在于让子类拥有父类的属性，那么把父对象的属性全部复制给子对象不就OK了吗？说干就干，操作代码如下：</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个是码农对象</span></span><br><span class="line"><span class="keyword">var</span> codingPeasant = &#123;</span><br><span class="line">  <span class="string">'coding'</span> : <span class="literal">true</span>, <span class="comment">//可以编码</span></span><br><span class="line">  <span class="string">'debug'</span> : <span class="literal">true</span>, <span class="comment">//可以修改bug</span></span><br><span class="line">  <span class="string">'feature'</span> : [<span class="string">'加班多'</span>,<span class="string">'压力大'</span>], <span class="comment">//特征</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowCopy</span>(<span class="params">fObj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sObj = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> fObj)&#123;</span><br><span class="line">    sObj[key] = fObj[key];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sObj;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> frontEndDev = shallowCopy(codingPeasant); <span class="comment">//这个是前端开发者</span></span><br><span class="line">frontEndDev.skill = [<span class="string">'html'</span>,<span class="string">'javascript'</span>,<span class="string">'css'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(frontEndDev.feature); <span class="comment">//['加班多','压力大']</span></span><br></pre></td></tr></table></figure>
-<pre><code>将继承方法的核心代码
-</code></pre><p>  这样<code>frontEndDev</code>对象就继承了<code>codingPeasant</code>对象，前者拥有后者的属性，似乎无可挑剔。但是我自己作为一个前端开发者，掉头发好明显，所以我给<code>frontEndDev</code>对象的属性进行修改，如下：</p>
+<p>  这样<code>frontEndDev</code>对象就继承了<code>codingPeasant</code>对象，前者拥有后者的属性，似乎无可挑剔。但是我自己作为一个前端开发者，掉头发好明显，所以我给<code>frontEndDev</code>对象的属性进行修改，如下：</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">frontEndDev.feature.push(<span class="string">'掉头发'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(frontEndDev.feature); <span class="comment">//['加班多','压力大','掉头发']</span></span><br><span class="line"><span class="built_in">console</span>.log(codingPeasant.feature); <span class="comment">//['加班多','压力大','掉头发']</span></span><br></pre></td></tr></table></figure>
 <p>  通过上面的代码和运行结果，我们可以发现当父对象的属性值为对象或者数组这类数据结构时，修改子对象的属性，可能会反射到父对象身上，又是浅度复制的锅！</p>
 <h3 id="3-deepCopy方法"><a href="#3-deepCopy方法" class="headerlink" title="3.deepCopy方法"></a>3.<code>deepCopy</code>方法</h3><p>  对上一中方法进行改进，解决浅度复制的弊端即可，改进方案如下：</p>
@@ -321,15 +414,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -342,10 +439,6 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -553,15 +646,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,10 +671,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
