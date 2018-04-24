@@ -6,23 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://youling4438.github.io/hexo">
-  <title>简单了解一下js中的apply和call | 修罗战场</title>
+  <title>Tag: String | 修罗战场</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单的认识一下apply()方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数;call()方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表); 对比一下，貌似没有太大区别。。。  call()方法的作用和apply()方法类似，只有一个区别，就是 call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含">
-<meta name="keywords" content="js,javascript,function,apply,call">
-<meta property="og:type" content="article">
-<meta property="og:title" content="简单了解一下js中的apply和call">
-<meta property="og:url" content="https://youling4438.github.io/hexo/2018/04/07/js-apply-call/index.html">
+  <meta name="description" content="汇集前端开发的知识点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="修罗战场">
+<meta property="og:url" content="https://youling4438.github.io/hexo/tags/String/index.html">
 <meta property="og:site_name" content="修罗战场">
-<meta property="og:description" content="简单的认识一下apply()方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数;call()方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表); 对比一下，貌似没有太大区别。。。  call()方法的作用和apply()方法类似，只有一个区别，就是 call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含">
+<meta property="og:description" content="汇集前端开发的知识点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://youling4438.github.io/assets/blogImg/js_call.jpg">
-<meta property="og:image" content="https://youling4438.github.io/assets/blogImg/js_call_pop.jpg">
-<meta property="og:updated_time" content="2018-04-16T15:55:17.832Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简单了解一下js中的apply和call">
-<meta name="twitter:description" content="简单的认识一下apply()方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数;call()方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表); 对比一下，貌似没有太大区别。。。  call()方法的作用和apply()方法类似，只有一个区别，就是 call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含">
-<meta name="twitter:image" content="https://youling4438.github.io/assets/blogImg/js_call.jpg">
+<meta name="twitter:title" content="修罗战场">
+<meta name="twitter:description" content="汇集前端开发的知识点">
   
     <link rel="alternative" href="/atom.xml" title="修罗战场" type="application/atom+xml">
   
@@ -156,59 +151,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-js-apply-call" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      简单了解一下js中的apply和call
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/04/24/reverse-a-string/" class="archive-article-date">
+  	<time datetime="2018-04-24T15:09:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/04/24/reverse-a-string/">如何翻转一个字符串？</a>
     </h1>
   
 
-        
-        <a href="/2018/04/07/js-apply-call/" class="archive-article-date">
-  	<time datetime="2018-04-07T14:09:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简单的认识一下"><a href="#简单的认识一下" class="headerlink" title="简单的认识一下"></a><strong>简单的认识一下</strong></h2><p><code>apply()</code>方法调用一个函数, 其具有一个指定的<code>this</code>值，以及作为一个数组（或类似数组的对象）提供的参数;<br><code>call()</code>方法调用一个函数, 其具有一个指定的<code>this</code>值和分别地提供的参数(参数的列表);</p>
-<p>对比一下，貌似没有太大区别。。。</p>
-<blockquote>
-<p><code>call()</code>方法的作用和<code>apply()</code>方法类似，只有一个区别，就是 call()方法接受的是<strong>若干个参数的列表</strong>，而apply()方法接受的是一个包含多个参数的<strong>数组</strong></p>
-</blockquote>
-<p>看看使用方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this指向为Math,apply接受的参数为数组</span></span><br><span class="line"><span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]); <span class="comment">//6</span></span><br><span class="line"><span class="comment">//call接受的参数为若干个参数</span></span><br><span class="line"><span class="built_in">Math</span>.max.call(<span class="built_in">Math</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>); <span class="comment">//6</span></span><br></pre></td></tr></table></figure>
-<p>从结果来看都是一样的，就是<strong>对象调用了不属于自己的<code>function</code></strong>，关键点就是<strong>改变了function中this的指向</strong>，接下来简单展开一下<code>call()</code>和<code>apply()</code>的使用场景</p>
-<a id="more"></a>
-<h2 id="call-和apply-使用场景"><a href="#call-和apply-使用场景" class="headerlink" title="call()和apply()使用场景"></a><strong>call()和apply()使用场景</strong></h2><h3 id="1-强制调用function"><a href="#1-强制调用function" class="headerlink" title="1.强制调用function"></a>1.强制调用<code>function</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this指向为Math,apply接受的参数为数组</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="keyword">let</span> m = <span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>,arr); <span class="comment">//m为6</span></span><br></pre></td></tr></table></figure>
-<p>上面的例子中，数组对象arr强制调用了本属于<code>Math</code>对象的<code>max</code>方法找到了arr的最大值，为实现A对象去调用B对象的方法提供了一种思路</p>
-<h3 id="2-将鸭式辨型（类数组对象）转化成数组"><a href="#2-将鸭式辨型（类数组对象）转化成数组" class="headerlink" title="2.将鸭式辨型（类数组对象）转化成数组"></a>2.将鸭式辨型（类数组对象）转化成数组</h3><p>先说一下鸭式辨型，也就是类数组对象，比如下面的对象<code>obj</code>：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="number">0</span>: <span class="string">'a'</span>, <span class="number">1</span>: <span class="string">'b'</span>, <span class="number">2</span>:<span class="string">'c'</span>, <span class="attr">length</span>: <span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(obj);</span><br><span class="line"><span class="comment">//&#123;0: "a", 1: "b", 2: "c", length: 3&#125;</span></span><br><span class="line"><span class="keyword">var</span> arr = [ <span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span> ];</span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br><span class="line"><span class="comment">//(3) ["a", "b", "c"]</span></span><br></pre></td></tr></table></figure>
-<p>如果用<code>console.table()</code>方法查看<code>obj</code>与<code>arr</code>，几乎没有区别，如下图所示：</p>
-<p><img src="/assets/blogImg/js_call.jpg" alt="查看类数组对象"></p>
-<p>虽说很相似，但还是无法使用数组的一些高级API，如果想要调用数组API可以如下操作：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="number">0</span>: <span class="string">'a'</span>, <span class="number">1</span>: <span class="string">'b'</span>, <span class="number">2</span>:<span class="string">'c'</span>, <span class="attr">length</span>: <span class="number">3</span>&#125;;</span><br><span class="line"><span class="comment">//用apply()将鸭式辨型转换成数组</span></span><br><span class="line"><span class="keyword">var</span> objNew = [].slice.apply(obj);</span><br></pre></td></tr></table></figure>
-<p>如下图所示<br><img src="/assets/blogImg/js_call_pop.jpg" alt="转换成数组对象"><br>这样我们就把一个鸭式辨型转换成数组了！</p>
-<h3 id="3-改变函数中this的指向"><a href="#3-改变函数中this的指向" class="headerlink" title="3.改变函数中this的指向"></a>3.改变函数中this的指向</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> objA = &#123;</span><br><span class="line">    <span class="string">"name"</span> : <span class="string">"zhangqi"</span>,</span><br><span class="line">    <span class="string">"sayName"</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> objB = &#123;</span><br><span class="line">    <span class="string">"name"</span> : <span class="string">"youling"</span>,</span><br><span class="line">    <span class="string">"sayName"</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">objA.sayName(); <span class="comment">//"zhangqi"</span></span><br><span class="line">objB.sayName(); <span class="comment">//"youling"</span></span><br><span class="line">objA.sayName.apply(objB); <span class="comment">//"youling"</span></span><br><span class="line">objB.sayName.call(objA); <span class="comment">//"zhangqi"</span></span><br></pre></td></tr></table></figure>
-<p>原来的<code>this</code>分别指向各自的闭包对象<code>objA</code>和<code>objB</code>，使用<code>apply()</code>或者<code>call()</code>之后，执行objA.sayName.apply(objB)这行之后，objA中<code>sayName</code>内部的<code>this</code>指向objB,所以打印出来的是objB的<code>name</code>属性”youling”;这样便修改<code>function</code>内部的<code>this</code>的指向</p>
-<h3 id="4-实现继承"><a href="#4-实现继承" class="headerlink" title="4.实现继承"></a>4.实现继承</h3><p>现在我们有两个类<code>father</code>和<code>son</code>如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">father</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.lastName = <span class="string">"张"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">son</span>(<span class="params">name,hobbies</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = name;</span><br><span class="line">    <span class="keyword">this</span>.hobbies = hobbies;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如何让子类继承父类，让子类拥有父类的<code>lastName</code>属性，有一种方法是将父类中<code>this</code>指向子类即可，代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//子类修改如下即可</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">son</span>(<span class="params">name,hobbies</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//this指向son，实现绑定</span></span><br><span class="line">    father.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">this</span>.firstName = name;</span><br><span class="line">    <span class="keyword">this</span>.hobbies = hobbies;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> s = <span class="keyword">new</span> son(<span class="string">"琦"</span>,[<span class="string">"music"</span>,<span class="string">"CSS3"</span>,<span class="string">"poetry"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s.lastName); <span class="comment">//"张"</span></span><br></pre></td></tr></table></figure>
-<p>用<code>apply</code>把father内的<code>this</code>指向son,从而让son的实例化对象继承了father的<code>lastName</code>属性，当然，继承还有许多其他方式，感兴趣可以<strong><a href="/2018/03/12/javascript-inherit/">点击</a></strong>了解更多</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -222,129 +194,29 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">function</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">apply</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">call</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://youling4438.github.io/hexo/2018/04/07/js-apply-call/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/04/24/reverse-a-string/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          如何翻转一个字符串？
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/03/13/javascript-encapsulation/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">javascript中的封装方法演变史</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -367,9 +239,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

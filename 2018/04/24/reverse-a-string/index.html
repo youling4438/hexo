@@ -6,23 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://youling4438.github.io/hexo">
-  <title>简单了解一下js中的apply和call | 修罗战场</title>
+  <title>如何翻转一个字符串？ | 修罗战场</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单的认识一下apply()方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数;call()方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表); 对比一下，貌似没有太大区别。。。  call()方法的作用和apply()方法类似，只有一个区别，就是 call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含">
-<meta name="keywords" content="js,javascript,function,apply,call">
+  <meta name="description" content="如何翻转一个字符串？简单描述一下，就是输入&amp;#39;you&amp;#39;，输出uoy,那么如何来实现这个效果呢？ 1.使用Array对象的翻转方法我们先简单分析一下，String对象没有翻转的方法，Array对象有一个翻转的方法Array.reverse(),而Array对象可以与String对象进行相互转化，那么我们可以执行以下操作： 1.把String对象转化成Array对象2.翻转Array对象">
+<meta name="keywords" content="js,javascript,String,Array">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单了解一下js中的apply和call">
-<meta property="og:url" content="https://youling4438.github.io/hexo/2018/04/07/js-apply-call/index.html">
+<meta property="og:title" content="如何翻转一个字符串？">
+<meta property="og:url" content="https://youling4438.github.io/hexo/2018/04/24/reverse-a-string/index.html">
 <meta property="og:site_name" content="修罗战场">
-<meta property="og:description" content="简单的认识一下apply()方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数;call()方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表); 对比一下，貌似没有太大区别。。。  call()方法的作用和apply()方法类似，只有一个区别，就是 call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含">
+<meta property="og:description" content="如何翻转一个字符串？简单描述一下，就是输入&amp;#39;you&amp;#39;，输出uoy,那么如何来实现这个效果呢？ 1.使用Array对象的翻转方法我们先简单分析一下，String对象没有翻转的方法，Array对象有一个翻转的方法Array.reverse(),而Array对象可以与String对象进行相互转化，那么我们可以执行以下操作： 1.把String对象转化成Array对象2.翻转Array对象">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://youling4438.github.io/assets/blogImg/js_call.jpg">
-<meta property="og:image" content="https://youling4438.github.io/assets/blogImg/js_call_pop.jpg">
-<meta property="og:updated_time" content="2018-04-16T15:55:17.832Z">
+<meta property="og:updated_time" content="2018-04-24T16:23:52.355Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简单了解一下js中的apply和call">
-<meta name="twitter:description" content="简单的认识一下apply()方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数;call()方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表); 对比一下，貌似没有太大区别。。。  call()方法的作用和apply()方法类似，只有一个区别，就是 call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含">
-<meta name="twitter:image" content="https://youling4438.github.io/assets/blogImg/js_call.jpg">
+<meta name="twitter:title" content="如何翻转一个字符串？">
+<meta name="twitter:description" content="如何翻转一个字符串？简单描述一下，就是输入&amp;#39;you&amp;#39;，输出uoy,那么如何来实现这个效果呢？ 1.使用Array对象的翻转方法我们先简单分析一下，String对象没有翻转的方法，Array对象有一个翻转的方法Array.reverse(),而Array对象可以与String对象进行相互转化，那么我们可以执行以下操作： 1.把String对象转化成Array对象2.翻转Array对象">
   
     <link rel="alternative" href="/atom.xml" title="修罗战场" type="application/atom+xml">
   
@@ -156,52 +153,39 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-js-apply-call" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-reverse-a-string" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      简单了解一下js中的apply和call
+      如何翻转一个字符串？
     </h1>
   
 
         
-        <a href="/2018/04/07/js-apply-call/" class="archive-article-date">
-  	<time datetime="2018-04-07T14:09:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-07</time>
+        <a href="/2018/04/24/reverse-a-string/" class="archive-article-date">
+  	<time datetime="2018-04-24T15:09:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简单的认识一下"><a href="#简单的认识一下" class="headerlink" title="简单的认识一下"></a><strong>简单的认识一下</strong></h2><p><code>apply()</code>方法调用一个函数, 其具有一个指定的<code>this</code>值，以及作为一个数组（或类似数组的对象）提供的参数;<br><code>call()</code>方法调用一个函数, 其具有一个指定的<code>this</code>值和分别地提供的参数(参数的列表);</p>
-<p>对比一下，貌似没有太大区别。。。</p>
-<blockquote>
-<p><code>call()</code>方法的作用和<code>apply()</code>方法类似，只有一个区别，就是 call()方法接受的是<strong>若干个参数的列表</strong>，而apply()方法接受的是一个包含多个参数的<strong>数组</strong></p>
-</blockquote>
-<p>看看使用方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this指向为Math,apply接受的参数为数组</span></span><br><span class="line"><span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]); <span class="comment">//6</span></span><br><span class="line"><span class="comment">//call接受的参数为若干个参数</span></span><br><span class="line"><span class="built_in">Math</span>.max.call(<span class="built_in">Math</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>); <span class="comment">//6</span></span><br></pre></td></tr></table></figure>
-<p>从结果来看都是一样的，就是<strong>对象调用了不属于自己的<code>function</code></strong>，关键点就是<strong>改变了function中this的指向</strong>，接下来简单展开一下<code>call()</code>和<code>apply()</code>的使用场景</p>
+        <h3 id="如何翻转一个字符串？"><a href="#如何翻转一个字符串？" class="headerlink" title="如何翻转一个字符串？"></a>如何翻转一个字符串？</h3><p>简单描述一下，就是输入<code>&#39;you&#39;</code>，输出<code>uoy</code>,那么如何来实现这个效果呢？</p>
+<h3 id="1-使用Array对象的翻转方法"><a href="#1-使用Array对象的翻转方法" class="headerlink" title="1.使用Array对象的翻转方法"></a>1.使用<code>Array</code>对象的翻转方法</h3><p>我们先简单分析一下，<code>String</code>对象没有翻转的方法，<code>Array</code>对象有一个翻转的方法<code>Array.reverse()</code>,而<code>Array</code>对象可以与<code>String</code>对象进行相互转化，那么我们可以执行以下操作：</p>
+<p>1.把<code>String</code>对象转化成<code>Array</code>对象<br>2.翻转<code>Array</code>对象<br>3.把<code>Array</code>对象转化成<code>String</code>对象</p>
 <a id="more"></a>
-<h2 id="call-和apply-使用场景"><a href="#call-和apply-使用场景" class="headerlink" title="call()和apply()使用场景"></a><strong>call()和apply()使用场景</strong></h2><h3 id="1-强制调用function"><a href="#1-强制调用function" class="headerlink" title="1.强制调用function"></a>1.强制调用<code>function</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this指向为Math,apply接受的参数为数组</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="keyword">let</span> m = <span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>,arr); <span class="comment">//m为6</span></span><br></pre></td></tr></table></figure>
-<p>上面的例子中，数组对象arr强制调用了本属于<code>Math</code>对象的<code>max</code>方法找到了arr的最大值，为实现A对象去调用B对象的方法提供了一种思路</p>
-<h3 id="2-将鸭式辨型（类数组对象）转化成数组"><a href="#2-将鸭式辨型（类数组对象）转化成数组" class="headerlink" title="2.将鸭式辨型（类数组对象）转化成数组"></a>2.将鸭式辨型（类数组对象）转化成数组</h3><p>先说一下鸭式辨型，也就是类数组对象，比如下面的对象<code>obj</code>：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="number">0</span>: <span class="string">'a'</span>, <span class="number">1</span>: <span class="string">'b'</span>, <span class="number">2</span>:<span class="string">'c'</span>, <span class="attr">length</span>: <span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(obj);</span><br><span class="line"><span class="comment">//&#123;0: "a", 1: "b", 2: "c", length: 3&#125;</span></span><br><span class="line"><span class="keyword">var</span> arr = [ <span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span> ];</span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br><span class="line"><span class="comment">//(3) ["a", "b", "c"]</span></span><br></pre></td></tr></table></figure>
-<p>如果用<code>console.table()</code>方法查看<code>obj</code>与<code>arr</code>，几乎没有区别，如下图所示：</p>
-<p><img src="/assets/blogImg/js_call.jpg" alt="查看类数组对象"></p>
-<p>虽说很相似，但还是无法使用数组的一些高级API，如果想要调用数组API可以如下操作：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="number">0</span>: <span class="string">'a'</span>, <span class="number">1</span>: <span class="string">'b'</span>, <span class="number">2</span>:<span class="string">'c'</span>, <span class="attr">length</span>: <span class="number">3</span>&#125;;</span><br><span class="line"><span class="comment">//用apply()将鸭式辨型转换成数组</span></span><br><span class="line"><span class="keyword">var</span> objNew = [].slice.apply(obj);</span><br></pre></td></tr></table></figure>
-<p>如下图所示<br><img src="/assets/blogImg/js_call_pop.jpg" alt="转换成数组对象"><br>这样我们就把一个鸭式辨型转换成数组了！</p>
-<h3 id="3-改变函数中this的指向"><a href="#3-改变函数中this的指向" class="headerlink" title="3.改变函数中this的指向"></a>3.改变函数中this的指向</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> objA = &#123;</span><br><span class="line">    <span class="string">"name"</span> : <span class="string">"zhangqi"</span>,</span><br><span class="line">    <span class="string">"sayName"</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> objB = &#123;</span><br><span class="line">    <span class="string">"name"</span> : <span class="string">"youling"</span>,</span><br><span class="line">    <span class="string">"sayName"</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">objA.sayName(); <span class="comment">//"zhangqi"</span></span><br><span class="line">objB.sayName(); <span class="comment">//"youling"</span></span><br><span class="line">objA.sayName.apply(objB); <span class="comment">//"youling"</span></span><br><span class="line">objB.sayName.call(objA); <span class="comment">//"zhangqi"</span></span><br></pre></td></tr></table></figure>
-<p>原来的<code>this</code>分别指向各自的闭包对象<code>objA</code>和<code>objB</code>，使用<code>apply()</code>或者<code>call()</code>之后，执行objA.sayName.apply(objB)这行之后，objA中<code>sayName</code>内部的<code>this</code>指向objB,所以打印出来的是objB的<code>name</code>属性”youling”;这样便修改<code>function</code>内部的<code>this</code>的指向</p>
-<h3 id="4-实现继承"><a href="#4-实现继承" class="headerlink" title="4.实现继承"></a>4.实现继承</h3><p>现在我们有两个类<code>father</code>和<code>son</code>如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">father</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.lastName = <span class="string">"张"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">son</span>(<span class="params">name,hobbies</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = name;</span><br><span class="line">    <span class="keyword">this</span>.hobbies = hobbies;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如何让子类继承父类，让子类拥有父类的<code>lastName</code>属性，有一种方法是将父类中<code>this</code>指向子类即可，代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//子类修改如下即可</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">son</span>(<span class="params">name,hobbies</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//this指向son，实现绑定</span></span><br><span class="line">    father.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">this</span>.firstName = name;</span><br><span class="line">    <span class="keyword">this</span>.hobbies = hobbies;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> s = <span class="keyword">new</span> son(<span class="string">"琦"</span>,[<span class="string">"music"</span>,<span class="string">"CSS3"</span>,<span class="string">"poetry"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s.lastName); <span class="comment">//"张"</span></span><br></pre></td></tr></table></figure>
-<p>用<code>apply</code>把father内的<code>this</code>指向son,从而让son的实例化对象继承了father的<code>lastName</code>属性，当然，继承还有许多其他方式，感兴趣可以<strong><a href="/2018/03/12/javascript-inherit/">点击</a></strong>了解更多</p>
-
+<p>思路已经很清晰了，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//转化string为array</span></span><br><span class="line">    <span class="keyword">let</span> arr = str.split(<span class="string">''</span>);</span><br><span class="line">    <span class="comment">//翻转array</span></span><br><span class="line">    <span class="keyword">let</span> reArr = arr.reverse();</span><br><span class="line">    <span class="comment">//array转为string</span></span><br><span class="line">    <span class="keyword">return</span> reArr.join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然，为了减少不必要的中间变量和代码行数，上面的方法我们还可以精简一下，如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-使用for循环遍历String对象方法"><a href="#2-使用for循环遍历String对象方法" class="headerlink" title="2.使用for循环遍历String对象方法"></a>2.使用<code>for</code>循环遍历<code>String</code>对象方法</h3><p>翻转一个字符串，看起来似乎就是把原来字符串的<strong>尾部元素</strong>，拿出来放在新字符串的<strong>头部</strong>；顺着这个思路，我们可以从尾部开始循环<code>String</code>对象，依次拿出最后一个元素，拼在新字符串的头部，最后得到的新字符串就是我们想要的翻转过的字符串，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> reStr = <span class="string">''</span>,length = str.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=length<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        reStr += str[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> reStr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>每次从原字符串最后面拿一个，放到新字符串的头部，然后拿原字符串倒数第二个，放在新字符串正数第二个，以此类推，最后返回我们想要的翻转后的字符串。</p>
+<h3 id="3-使用递归思想配合String对象方法"><a href="#3-使用递归思想配合String对象方法" class="headerlink" title="3.使用递归思想配合String对象方法"></a>3.使用递归思想配合<code>String</code>对象方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//终止递归条用</span></span><br><span class="line">    <span class="keyword">if</span>(str.length == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//拿到去除头部第一个元素后新的字符串</span></span><br><span class="line">        <span class="keyword">let</span> newStr = str.substr(<span class="number">1</span>);</span><br><span class="line">        <span class="comment">//每次将第一个元素拼在尾部</span></span><br><span class="line">        <span class="keyword">return</span> reverseString(newStr) + str[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//终止递归条用</span></span><br><span class="line">    <span class="keyword">if</span>(str.length == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//拿到去除头部第一个元素后新的字符串</span></span><br><span class="line">        <span class="keyword">let</span> string = str.substr(<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">let</span> newStr = str.substr(<span class="number">0</span>,str.length<span class="number">-1</span>);</span><br><span class="line">        <span class="comment">//每次将第一个元素拼在尾部</span></span><br><span class="line">        <span class="keyword">return</span> string + reverseString(newStr) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -222,15 +206,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">function</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">apply</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">call</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
         		</li>
       		
 		</ul>
@@ -286,7 +266,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://youling4438.github.io/hexo/2018/04/07/js-apply-call/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://youling4438.github.io/hexo/2018/04/24/reverse-a-string/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -300,18 +280,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/24/reverse-a-string/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          如何翻转一个字符串？
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/13/javascript-encapsulation/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">javascript中的封装方法演变史</div>
+    <a href="/2018/04/07/js-apply-call/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">简单了解一下js中的apply和call</div>
       <i class="icon-circle-right"></i>
     </a>
   
