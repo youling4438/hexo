@@ -16,10 +16,12 @@
 <meta property="og:site_name" content="修罗战场">
 <meta property="og:description" content="如何翻转一个字符串？简单描述一下，就是输入&amp;#39;you&amp;#39;，输出&amp;#39;uoy&amp;#39;,那么如何来实现这个效果呢？ 1.使用Array对象的翻转方法我们先简单分析一下，String对象没有翻转的方法，Array对象有一个翻转的方法Array.reverse(),而Array对象可以与String对象进行相互转化，那么我们可以执行以下操作： 1.把String对象转化成Array对象2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-25T15:03:07.188Z">
+<meta property="og:image" content="https://youling4438.github.io/assets/blogImg/digui.jpg">
+<meta property="og:updated_time" content="2018-04-25T15:14:19.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何翻转一个字符串？">
 <meta name="twitter:description" content="如何翻转一个字符串？简单描述一下，就是输入&amp;#39;you&amp;#39;，输出&amp;#39;uoy&amp;#39;,那么如何来实现这个效果呢？ 1.使用Array对象的翻转方法我们先简单分析一下，String对象没有翻转的方法，Array对象有一个翻转的方法Array.reverse(),而Array对象可以与String对象进行相互转化，那么我们可以执行以下操作： 1.把String对象转化成Array对象2">
+<meta name="twitter:image" content="https://youling4438.github.io/assets/blogImg/digui.jpg">
   
     <link rel="alternative" href="/atom.xml" title="修罗战场" type="application/atom+xml">
   
@@ -191,7 +193,11 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">我们想要跑到距离自己<span class="number">1000</span>m的地方，我们得先跑到距离自己<span class="number">900</span>m的地方，</span><br><span class="line">    我们想要跑到距离自己<span class="number">900</span>m的地方，我们得先跑到距离自己<span class="number">800</span>m的地方，</span><br><span class="line">    、、、</span><br><span class="line">        我们想要跑到距离自己<span class="number">200</span>m的地方，我们得先跑到距离自己<span class="number">100</span>m的地方，</span><br><span class="line">            我们想要跑到距离自己<span class="number">100</span>m的地方，我们得先跑到距离自己<span class="number">0</span>m的地方(起点)，</span><br><span class="line">            我们开始跑<span class="number">100</span>米，到达距离自己<span class="number">100</span>m地方，</span><br><span class="line">        我们开始跑<span class="number">100</span>米，到达距离自己<span class="number">200</span>m地方，  </span><br><span class="line">    、、、</span><br><span class="line">    我们开始跑<span class="number">100</span>米，到达距离自己<span class="number">900</span>m地方，     </span><br><span class="line">我们开始跑<span class="number">100</span>米，到达距离自己<span class="number">1000</span>m地方。</span><br></pre></td></tr></table></figure>
 <p>然后重新看一下上面那个翻转字符串的解法，每次从字符串的头部拿出一个字符放在新字符串的尾部，我们换个方向，每次拿出尾部一个字符串，放在新字符串的头部，于是上面的方法可以改成下面这一种：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//终止递归条用</span></span><br><span class="line">    <span class="keyword">if</span>(str.length == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//拿到去除头部第一个元素后新的字符串</span></span><br><span class="line">        <span class="keyword">let</span> string = str.substr(<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">let</span> newStr = str.substr(<span class="number">0</span>,str.length<span class="number">-1</span>);</span><br><span class="line">        <span class="comment">//每次将第一个元素拼在尾部</span></span><br><span class="line">        <span class="keyword">return</span> string + reverseString(newStr) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第二种改写没有什么特别的意义，就是巩固一下递归思想。</p>
+<p>第二种改写没有什么特别的意义，就是巩固一下递归思想。最后在放一张有意思的图片：</p>
+<p><img src="/assets/blogImg/digui.jpg" alt="查看类数组对象"></p>
+<blockquote>
+<h4 id="关于递归，知乎有几条有意思的解释"><a href="#关于递归，知乎有几条有意思的解释" class="headerlink" title="关于递归，知乎有几条有意思的解释"></a>关于递归，知乎有几条有意思的解释</h4><p>1.递归就是包子馅的包子。它的极限是馒头<br>2.一个洋葱是一个带着一层洋葱皮的洋葱<br>3.要理解递归，先得理解递归<br>4.「不宜公开讨论的政治内容」的定义和范畴本身也属于「不宜公开讨论的政治内容」<br>5.迭代——《明日边缘》，递归——《盗梦空间》</p>
+</blockquote>
 
       
 
