@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="修罗战场">
 <meta property="og:description" content="如何实现一个正整数阶乘的方法？比如输入数字5，返回120(5x4x3x2x1)，这个问题比较简单，我直接写一下几种实现阶乘的方法 1.直接写阶乘的方法不废话，直接上方法： 123456789101112function intFactorial(num)&amp;#123;    if(num&amp;gt;0)&amp;#123;        let s = 1,i=1;        for(;i&amp;lt;=num;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-25T15:46:47.462Z">
+<meta property="og:updated_time" content="2018-04-25T15:50:17.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何实现一个正整数阶乘的方法？">
 <meta name="twitter:description" content="如何实现一个正整数阶乘的方法？比如输入数字5，返回120(5x4x3x2x1)，这个问题比较简单，我直接写一下几种实现阶乘的方法 1.直接写阶乘的方法不废话，直接上方法： 123456789101112function intFactorial(num)&amp;#123;    if(num&amp;gt;0)&amp;#123;        let s = 1,i=1;        for(;i&amp;lt;=num;">
@@ -179,7 +179,7 @@
 <a id="more"></a>
 <p>当然，我们根据循环语句不通，上述方法还可以改写成如下样子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">intFactorial</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> s = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(num&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            s *= num--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.error(<span class="string">"请输入正整数 from function intFactorial"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果看不懂上面的方法，你可能适合看这篇文章，别难为自己了！</p>
+<p>如果看不懂上面的方法，你可能不适合看这篇文章，别难为自己了！</p>
 <h3 id="2-利用Array的reduce方法"><a href="#2-利用Array的reduce方法" class="headerlink" title="2.利用Array的reduce方法"></a>2.利用<code>Array</code>的<code>reduce</code>方法</h3><h3 id="3-递归思想"><a href="#3-递归思想" class="headerlink" title="3.递归思想"></a>3.递归思想</h3>
       
 
