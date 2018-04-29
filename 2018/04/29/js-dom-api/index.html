@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://youling4438.github.io/hexo">
-  <title>Tag: ES6 | 修罗战场</title>
+  <title>javascript中Dom节点相关API汇总 | 修罗战场</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="汇集前端开发的知识点">
-<meta property="og:type" content="website">
-<meta property="og:title" content="修罗战场">
-<meta property="og:url" content="https://youling4438.github.io/hexo/tags/ES6/index.html">
+  <meta name="description" content="最近工作中遇到一些需求，基本上都是使用原生js中查找和操作dom节点的方法，才发现自己对原生js操作dom的方法非常生疏，因此整理一下相关的API，方便以后自己查阅。 1.Document节点1.1Document节点的属性123456789101112//返回当前文档的类型document.doctype   //返回当前文档的根节点document.documentElement  //返回d">
+<meta name="keywords" content="js,javascript,dom,api">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript中Dom节点相关API汇总">
+<meta property="og:url" content="https://youling4438.github.io/hexo/2018/04/29/js-dom-api/index.html">
 <meta property="og:site_name" content="修罗战场">
-<meta property="og:description" content="汇集前端开发的知识点">
+<meta property="og:description" content="最近工作中遇到一些需求，基本上都是使用原生js中查找和操作dom节点的方法，才发现自己对原生js操作dom的方法非常生疏，因此整理一下相关的API，方便以后自己查阅。 1.Document节点1.1Document节点的属性123456789101112//返回当前文档的类型document.doctype   //返回当前文档的根节点document.documentElement  //返回d">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-29T15:53:43.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="修罗战场">
-<meta name="twitter:description" content="汇集前端开发的知识点">
+<meta name="twitter:title" content="javascript中Dom节点相关API汇总">
+<meta name="twitter:description" content="最近工作中遇到一些需求，基本上都是使用原生js中查找和操作dom节点的方法，才发现自己对原生js操作dom的方法非常生疏，因此整理一下相关的API，方便以后自己查阅。 1.Document节点1.1Document节点的属性123456789101112//返回当前文档的类型document.doctype   //返回当前文档的根节点document.documentElement  //返回d">
   
     <link rel="alternative" href="/atom.xml" title="修罗战场" type="application/atom+xml">
   
@@ -151,36 +153,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-js-dom-api" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/25/int-factorial/" class="archive-article-date">
-  	<time datetime="2018-04-25T15:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/25/int-factorial/">如何实现一个正整数阶乘的方法？</a>
+    <h1 class="article-title" itemprop="name">
+      javascript中Dom节点相关API汇总
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/29/js-dom-api/" class="archive-article-date">
+  	<time datetime="2018-04-29T15:15:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近工作中遇到一些需求，基本上都是使用原生js中查找和操作dom节点的方法，才发现自己对原生js操作dom的方法非常生疏，因此整理一下相关的API，方便以后自己查阅。</p>
+<h2 id="1-Document节点"><a href="#1-Document节点" class="headerlink" title="1.Document节点"></a>1.Document节点</h2><h3 id="1-1Document节点的属性"><a href="#1-1Document节点的属性" class="headerlink" title="1.1Document节点的属性"></a>1.1Document节点的属性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回当前文档的类型</span></span><br><span class="line"><span class="built_in">document</span>.doctype   </span><br><span class="line"><span class="comment">//返回当前文档的根节点</span></span><br><span class="line"><span class="built_in">document</span>.documentElement  </span><br><span class="line"><span class="comment">//返回document对象所在的window对象</span></span><br><span class="line"><span class="built_in">document</span>.defaultView  </span><br><span class="line"><span class="comment">//返回当前文档的&lt;body&gt;节点 </span></span><br><span class="line"><span class="built_in">document</span>.body   </span><br><span class="line"><span class="comment">//返回当前文档的&lt;head&gt;节点</span></span><br><span class="line"><span class="built_in">document</span>.head   </span><br><span class="line"><span class="comment">//返回当前文档中获得焦点的那个元素。</span></span><br><span class="line"><span class="built_in">document</span>.activeElement</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><strong>节点集合属性</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回当前文档的所有a元素</span></span><br><span class="line"><span class="built_in">document</span>.links </span><br><span class="line"><span class="comment">//返回页面中所有表单元素</span></span><br><span class="line"><span class="built_in">document</span>.forms </span><br><span class="line"><span class="comment">//返回页面中所有图片元素</span></span><br><span class="line"><span class="built_in">document</span>.images  </span><br><span class="line"><span class="comment">//返回网页中所有嵌入对象</span></span><br><span class="line"><span class="built_in">document</span>.embeds </span><br><span class="line"><span class="comment">//返回当前文档的所有脚本</span></span><br><span class="line"><span class="built_in">document</span>.scripts  </span><br><span class="line"><span class="comment">//返回当前网页的所有样式表</span></span><br><span class="line"><span class="built_in">document</span>.styleSheets</span><br></pre></td></tr></table></figure></p>
+<p><strong>文档信息属性</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//表示当前文档的网址</span></span><br><span class="line"><span class="built_in">document</span>.documentURI  </span><br><span class="line"><span class="comment">//返回当前文档的网址</span></span><br><span class="line"><span class="built_in">document</span>.URL  </span><br><span class="line"><span class="comment">//返回当前文档的域名</span></span><br><span class="line"><span class="built_in">document</span>.domain  </span><br><span class="line"><span class="comment">//返回当前文档最后修改的时间戳</span></span><br><span class="line"><span class="built_in">document</span>.lastModified  </span><br><span class="line"><span class="comment">//返回location对象，提供当前文档的URL信息</span></span><br><span class="line"><span class="built_in">document</span>.location  </span><br><span class="line"><span class="comment">//返回当前文档的访问来源</span></span><br><span class="line"><span class="built_in">document</span>.referrer  </span><br><span class="line"><span class="comment">//返回当前文档的标题</span></span><br><span class="line"><span class="built_in">document</span>.title    </span><br><span class="line"><span class="comment">//属性返回渲染当前文档的字符集，比如UTF-8、ISO-8859-1。</span></span><br><span class="line"><span class="built_in">document</span>.characterSet</span><br><span class="line"><span class="comment">//返回当前文档的状态</span></span><br><span class="line"><span class="built_in">document</span>.readyState  </span><br><span class="line"><span class="comment">//控制当前文档是否可编辑，可读写</span></span><br><span class="line"><span class="built_in">document</span>.designMode </span><br><span class="line"><span class="comment">//返回浏览器处理文档的模式</span></span><br><span class="line"><span class="built_in">document</span>.compatMode  </span><br><span class="line"><span class="comment">//用来操作Cookie</span></span><br><span class="line"><span class="built_in">document</span>.cookie</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-2Document节点的操作方法"><a href="#1-2Document节点的操作方法" class="headerlink" title="1.2Document节点的操作方法"></a>1.2Document节点的操作方法</h3><p><strong>生成节点</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用来生成HTML元素节点。</span></span><br><span class="line"><span class="built_in">document</span>.createElement(tagName)   </span><br><span class="line"><span class="comment">//用来生成文本节点</span></span><br><span class="line"><span class="built_in">document</span>.createTextNode(text)   </span><br><span class="line"><span class="comment">//生成一个新的属性对象节点，并返回它。</span></span><br><span class="line"><span class="built_in">document</span>.createAttribute(name)  </span><br><span class="line"><span class="comment">//生成一个DocumentFragment对象</span></span><br><span class="line"><span class="built_in">document</span>.createDocumentFragment()  </span><br><span class="line"><span class="comment">//生成一个事件对象，该对象能被element.dispatchEvent()方法使用</span></span><br><span class="line"><span class="built_in">document</span>.createEvent(type)   </span><br><span class="line"><span class="comment">//注册事件</span></span><br><span class="line"><span class="built_in">document</span>.addEventListener(type,listener,capture)  </span><br><span class="line"><span class="comment">//注销事件</span></span><br><span class="line"><span class="built_in">document</span>.removeEventListener(type,listener,capture)  </span><br><span class="line"><span class="comment">//触发事件</span></span><br><span class="line"><span class="built_in">document</span>.dispatchEvent(event)</span><br></pre></td></tr></table></figure></p>
+<p><strong>查找节点</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接受一个CSS选择器作为参数，返回第一个匹配该选择器的元素节点。</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(selectors)   </span><br><span class="line"><span class="comment">//接受一个CSS选择器作为参数，返回所有匹配该选择器的元素节点。</span></span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(selectors)  </span><br><span class="line"><span class="comment">//返回所有指定HTML标签的元素</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(tagName)  </span><br><span class="line"><span class="comment">//返回包括了所有class名字符合指定条件的元素</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByClassName(className)   </span><br><span class="line"><span class="comment">//用于选择拥有name属性的HTML元素（比如&lt;form&gt;、&lt;radio&gt;、&lt;img&gt;、&lt;frame&gt;、&lt;embed&gt;和&lt;object&gt;等）</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByName(name)</span><br><span class="line"><span class="comment">//返回匹配指定id属性的元素节点。   </span></span><br><span class="line"><span class="built_in">document</span>.getElementById(id)   </span><br><span class="line"><span class="comment">//返回位于页面指定位置最上层的Element子节点。</span></span><br><span class="line"><span class="built_in">document</span>.elementFromPoint(x,y)</span><br></pre></td></tr></table></figure></p>
+<p><strong>读写节点方法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用于新建并打开一个文档</span></span><br><span class="line"><span class="built_in">document</span>.open()   </span><br><span class="line"><span class="comment">//不安比open方法所新建的文档</span></span><br><span class="line"><span class="built_in">document</span>.close()   </span><br><span class="line"><span class="comment">//用于向当前文档写入内容</span></span><br><span class="line"><span class="built_in">document</span>.write()   </span><br><span class="line"><span class="comment">//用于向当前文档写入内容，尾部添加换行符。</span></span><br><span class="line"><span class="built_in">document</span>.writeIn()</span><br></pre></td></tr></table></figure></p>
+<p><strong>其他节点方法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回一个布尔值，表示当前文档之中是否有元素被激活或获得焦点。</span></span><br><span class="line"><span class="built_in">document</span>.hasFocus()   </span><br><span class="line"><span class="comment">//将某个节点，从其原来所在的文档移除，插入当前文档，并返回插入后的新节点。</span></span><br><span class="line"><span class="built_in">document</span>.adoptNode(externalNode)  </span><br><span class="line"><span class="comment">//从外部文档拷贝指定节点，插入当前文档。</span></span><br><span class="line"><span class="built_in">document</span>.importNode(externalNode, deep)</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-Node节点"><a href="#2-Node节点" class="headerlink" title="2.Node节点"></a>2.Node节点</h2><h3 id="2-1Node节点的属性"><a href="#2-1Node节点的属性" class="headerlink" title="2.1Node节点的属性"></a>2.1Node节点的属性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回节点名称，只读</span></span><br><span class="line">Node.nodeName   </span><br><span class="line"><span class="comment">//返回节点类型的常数值，只读</span></span><br><span class="line">Node.nodeType   </span><br><span class="line"><span class="comment">//返回Text或Comment节点的文本值，只读</span></span><br><span class="line">Node.nodeValue  </span><br><span class="line"><span class="comment">//返回当前节点和它的所有后代节点的文本内容，可读写</span></span><br><span class="line">Node.textContent  </span><br><span class="line"><span class="comment">//返回当前网页的绝对路径</span></span><br><span class="line">Node.baseURI    </span><br><span class="line"></span><br><span class="line"><span class="comment">//返回当前节点所在的顶层文档对象，即document</span></span><br><span class="line">Node.ownerDocument  </span><br><span class="line"><span class="comment">//返回紧跟在当前节点后面的第一个兄弟节点</span></span><br><span class="line">Node.nextSibling  </span><br><span class="line"><span class="comment">//返回当前节点前面的、距离最近的一个兄弟节点</span></span><br><span class="line">Node.previousSibling  </span><br><span class="line"><span class="comment">//返回当前节点的父节点</span></span><br><span class="line">Node.parentNode   </span><br><span class="line"><span class="comment">//返回当前节点的父Element节点</span></span><br><span class="line">Node.parentElement  </span><br><span class="line"><span class="comment">//返回当前节点的所有子节点</span></span><br><span class="line">Node.childNodes   </span><br><span class="line"><span class="comment">//返回当前节点的第一个子节点</span></span><br><span class="line">Node.firstChild  </span><br><span class="line"><span class="comment">//返回当前节点的最后一个子节点</span></span><br><span class="line">Node.lastChild   </span><br><span class="line"></span><br><span class="line"><span class="comment">//parentNode接口</span></span><br><span class="line"><span class="comment">//返回指定节点的所有Element子节点</span></span><br><span class="line">Node.children  </span><br><span class="line"><span class="comment">//返回当前节点的第一个Element子节点</span></span><br><span class="line">Node.firstElementChild  </span><br><span class="line"><span class="comment">//返回当前节点的最后一个Element子节点</span></span><br><span class="line">Node.lastElementChild   </span><br><span class="line"><span class="comment">//返回当前节点所有Element子节点的数目</span></span><br><span class="line">Node.childElementCount</span><br></pre></td></tr></table></figure>
+<h3 id="2-2Node节点的操作方法"><a href="#2-2Node节点的操作方法" class="headerlink" title="2.2Node节点的操作方法"></a>2.2Node节点的操作方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//向节点添加最后一个子节点</span></span><br><span class="line">Node.appendChild(node)   </span><br><span class="line"><span class="comment">//返回布尔值，表示当前节点是否有子节点</span></span><br><span class="line">Node.hasChildNodes()   </span><br><span class="line"><span class="comment">// 默认为false(克隆节点), true(克隆节点及其属性，以及后代)</span></span><br><span class="line">Node.cloneNode(<span class="literal">true</span>)  </span><br><span class="line"><span class="comment">// 在指定子节点之前插入新的子节点</span></span><br><span class="line">Node.insertBefore(newNode,oldNode)  </span><br><span class="line"><span class="comment">//删除节点，在要删除节点的父节点上操作</span></span><br><span class="line">Node.removeChild(node)   </span><br><span class="line"><span class="comment">//替换节点</span></span><br><span class="line">Node.replaceChild(newChild,oldChild)  </span><br><span class="line"><span class="comment">//返回一个布尔值，表示参数节点是否为当前节点的后代节点</span></span><br><span class="line">Node.contains(node)  </span><br><span class="line"><span class="comment">//返回一个7个比特位的二进制值，表示参数节点和当前节点的关系</span></span><br><span class="line">Node.compareDocumentPosition(node)   </span><br><span class="line"><span class="comment">//返回布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同</span></span><br><span class="line">Node.isEqualNode(noe)  </span><br><span class="line"><span class="comment">//用于清理当前节点内部的所有Text节点。它会去除空的文本节点，并且将毗邻的文本节点合并成一个</span></span><br><span class="line">Node.normalize()   </span><br><span class="line"></span><br><span class="line"><span class="comment">//ChildNode接口</span></span><br><span class="line"><span class="comment">//用于删除当前节点</span></span><br><span class="line">Node.remove()  </span><br><span class="line"><span class="comment">//当前节点之前插入节点</span></span><br><span class="line">Node.before()  </span><br><span class="line"><span class="comment">//当前节点之后插入节点</span></span><br><span class="line">Node.after()</span><br><span class="line"><span class="comment">//替换当前节点</span></span><br><span class="line">Node.replaceWith()</span><br></pre></td></tr></table></figure>
+<h2 id="3-Element节点"><a href="#3-Element节点" class="headerlink" title="3.Element节点"></a>3.Element节点</h2><h3 id="3-1Element节点的属性"><a href="#3-1Element节点的属性" class="headerlink" title="3.1Element节点的属性"></a>3.1Element节点的属性</h3><h3 id="3-2Element节点的操作方法"><a href="#3-2Element节点的操作方法" class="headerlink" title="3.2Element节点的操作方法"></a>3.2Element节点的操作方法</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,99 +205,116 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dom</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES5</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">api</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://youling4438.github.io/hexo/2018/04/29/js-dom-api/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/26/my-first-post/" class="archive-article-date">
-  	<time datetime="2018-02-25T16:31:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/25/int-factorial/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何实现一个正整数阶乘的方法？</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/26/my-first-post/">我博客的第一篇文章</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">html5</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">CSS3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -309,9 +337,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
