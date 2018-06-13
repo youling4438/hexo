@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://youling4438.github.io/hexo">
-  <title>Tag: html | 修罗战场</title>
+  <title>Angular路由 | 修罗战场</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="汇集前端开发的知识点">
-<meta property="og:type" content="website">
-<meta property="og:title" content="修罗战场">
-<meta property="og:url" content="https://youling4438.github.io/hexo/tags/html/index.html">
+  <meta name="description" content="路由是在不同组件之间导航，实现跳转功能的一个模块，一般都在顶级模块中加载，并配置路由信息。为实现路由功能，我们需要先创建路由模块，完成路由配置，在别的模块(一般是根模块)引入路由模块，然后配置路由出口与路由链接，这样路由功能就基本完成。那么接下来详细看看每一步如何操作。 1.创建路由模块创建路由模块的核心代码如下： 12345678import &amp;#123; NgModule &amp;#125;">
+<meta name="keywords" content="Angular,js,javascript,router">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular路由">
+<meta property="og:url" content="https://youling4438.github.io/hexo/2018/06/13/angular-router/index.html">
 <meta property="og:site_name" content="修罗战场">
-<meta property="og:description" content="汇集前端开发的知识点">
+<meta property="og:description" content="路由是在不同组件之间导航，实现跳转功能的一个模块，一般都在顶级模块中加载，并配置路由信息。为实现路由功能，我们需要先创建路由模块，完成路由配置，在别的模块(一般是根模块)引入路由模块，然后配置路由出口与路由链接，这样路由功能就基本完成。那么接下来详细看看每一步如何操作。 1.创建路由模块创建路由模块的核心代码如下： 12345678import &amp;#123; NgModule &amp;#125;">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-13T12:10:48.780Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="修罗战场">
-<meta name="twitter:description" content="汇集前端开发的知识点">
+<meta name="twitter:title" content="Angular路由">
+<meta name="twitter:description" content="路由是在不同组件之间导航，实现跳转功能的一个模块，一般都在顶级模块中加载，并配置路由信息。为实现路由功能，我们需要先创建路由模块，完成路由配置，在别的模块(一般是根模块)引入路由模块，然后配置路由出口与路由链接，这样路由功能就基本完成。那么接下来详细看看每一步如何操作。 1.创建路由模块创建路由模块的核心代码如下： 12345678import &amp;#123; NgModule &amp;#125;">
   
     <link rel="alternative" href="/atom.xml" title="修罗战场" type="application/atom+xml">
   
@@ -156,40 +158,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-angular-router" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/26/my-first-post/" class="archive-article-date">
-  	<time datetime="2018-02-25T16:31:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/26/my-first-post/">我博客的第一篇文章</a>
+    <h1 class="article-title" itemprop="name">
+      Angular路由
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/06/13/angular-router/" class="archive-article-date">
+  	<time datetime="2018-06-13T10:13:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>路由是在不同组件之间导航，实现跳转功能的一个模块，一般都在顶级模块中加载，并配置路由信息。为实现路由功能，我们需要先创建路由模块，完成路由配置，在别的模块(一般是根模块)引入路由模块，然后配置路由出口与路由链接，这样路由功能就基本完成。那么接下来详细看看每一步如何操作。</p>
+<h3 id="1-创建路由模块"><a href="#1-创建路由模块" class="headerlink" title="1.创建路由模块"></a>1.创建路由模块</h3><p>创建路由模块的核心代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NgModule &#125;             <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; RouterModule, Routes &#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  imports: [ ],</span><br><span class="line">  exports: [ RouterModule ]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppRoutingModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>首先导入angular中与路由相关的一些模块,并将<code>RouterModule</code>导出，以便其他模块使用，最后导出路由根模块<code>AppRoutingModule</code><br><a id="more"></a></p>
+<h3 id="2-配置路由数组"><a href="#2-配置路由数组" class="headerlink" title="2.配置路由数组"></a>2.配置路由数组</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NgModule &#125;             <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; RouterModule, Routes &#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> &#123; AComponent &#125;   <span class="keyword">from</span> <span class="string">'./a/a.component'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; BComponent &#125;      <span class="keyword">from</span> <span class="string">'./b/b.component'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; CComponent &#125;  <span class="keyword">from</span> <span class="string">'./c/c.component'</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> routes: Routes = [</span><br><span class="line">  &#123; path: <span class="string">''</span>, redirectTo: <span class="string">'/a'</span>, pathMatch: <span class="string">'full'</span> &#125;,</span><br><span class="line">  &#123; path: <span class="string">'a'</span>, component: AComponent &#125;,</span><br><span class="line">  &#123; path: <span class="string">'c/:id'</span>, component: CComponent &#125;,</span><br><span class="line">  &#123; path: <span class="string">'b'</span>, component: BComponent &#125;</span><br><span class="line">];</span><br><span class="line"> </span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  imports: [ RouterModule.forRoot(routes) ],</span><br><span class="line">  exports: [ RouterModule ]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppRoutingModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>路由数组如上所示，每条记录都有<code>path</code>和<code>component</code>这两个配置项,path是用来与地址栏的url进行匹配的，匹配成功后会加载component对应的组件；<br>组件初始化时没有路由信息(path值为’’),默认当做’/a’处理，<code>redirectTo</code>就是重定向到另一个路由参数中去，也就是默认路由；<br>其中path配置为’c/:id’表示跳转到CComponent组件的同时还会接收通过路由传递的参数，来初始化该组件。当然，组件也需要一些配置，来接受参数。</p>
+<p><code>RouterModule.forRoot(routes)</code>的作用是初始化路由器，并监听url的变化。routes是我们上面配置好的路由数组，作为参数去初始化路由器。</p>
+<h3 id="3-引入路由模块"><a href="#3-引入路由模块" class="headerlink" title="3.引入路由模块"></a>3.引入路由模块</h3><p>在根模块中导入路由模块，要添加的核心代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; AppRoutingModule &#125;     <span class="keyword">from</span> <span class="string">'./app-routing.module'</span>;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  imports: [  AppRoutingModule ],</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-路由出口与链接"><a href="#4-路由出口与链接" class="headerlink" title="4.路由出口与链接"></a>4.路由出口与链接</h3><p>当路由器渲染了某一个组件之后，在视图哪里呈现呢？在路由出口里面，就是<code>&lt;router-outlet&gt;&lt;/router-outlet&gt;</code>,添加到模板页面里相应的位置即可，路由出口是用来呈现路由最终渲染的组件的一个平台(容器)。再看一段视图模板的代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">routerLink</span>=<span class="string">"/a"</span>&gt;</span>a<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">routerLink</span>=<span class="string">"/b"</span>&gt;</span>b<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-outlet</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>如上代码所示，<code>routerLink</code>表示点击之后路由的跳转链接，路由器监听到url变化，进行路由匹配，然后渲染匹配到的组件，最终在<router-outlet>标签所在的位置呈现出来。至此，路由功能完毕。</router-outlet></p>
+<h3 id="5-组件如何接受路由参数"><a href="#5-组件如何接受路由参数" class="headerlink" title="5.组件如何接受路由参数"></a>5.组件如何接受路由参数</h3><p>额外说一点，组件是如何接受路由携带的参数的，直接看需要给组件额外添加核心代码：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ActivatedRoute &#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line">id:<span class="built_in">String</span></span><br><span class="line"><span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> route: ActivatedRoute</span>) &#123;&#125;</span><br><span class="line">ngOnInit(): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.getId();</span><br><span class="line">&#125;</span><br><span class="line">getId(): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.id = <span class="keyword">this</span>.route.snapshot.paramMap.get(<span class="string">'id'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>给组件引入<code>ActivatedRoute</code>，和注入服务一样的方法，我们在构造函数内部注册该路由，并设置为私有变量route,<code>route.snapshot</code>是一个路由信息的静态快照，抓取自组件刚刚创建完毕之后。<code>paramMap</code>是一个从URL中提取的路由参数值的字典。”id” 对应的值就是要获取的参数id。通过<code>getId</code>这个方法，我们就可以获得通过路由传入的参数了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
+        		</li>
+      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
@@ -199,45 +217,112 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">html5</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">CSS3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">router</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://youling4438.github.io/hexo/2018/06/13/angular-router/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/06/13/angular-services/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Angular服务</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -260,9 +345,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

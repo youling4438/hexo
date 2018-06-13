@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="修罗战场">
 <meta property="og:description" content="今天简单介绍一下Angular框架中服务的一些知识。 1.为什么需要服务在Angular中最常用的就是Component(组件)。组件通常会通过一些自定义的指令去接受一些数据，并在组件内部进行逻辑处理。但事实上这样做并不合理，因为组件不应该直接获取数据，也不应该关心自己展示的数据是真实的还是模拟的假数据。组件仅仅只需要展示数据就可以了，获取和处理数据的工作让服务来完成就可以了。 而且服务也是让多个">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-13T03:29:43.247Z">
+<meta property="og:updated_time" content="2018-06-13T10:18:24.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular服务">
 <meta name="twitter:description" content="今天简单介绍一下Angular框架中服务的一些知识。 1.为什么需要服务在Angular中最常用的就是Component(组件)。组件通常会通过一些自定义的指令去接受一些数据，并在组件内部进行逻辑处理。但事实上这样做并不合理，因为组件不应该直接获取数据，也不应该关心自己展示的数据是真实的还是模拟的假数据。组件仅仅只需要展示数据就可以了，获取和处理数据的工作让服务来完成就可以了。 而且服务也是让多个">
@@ -187,7 +187,7 @@
 <p>服务的核心骨架如上代码所示。我们先导入了<code>Injectable</code>,添加了相应的装饰器<code>@Injectable()</code>。其中<code>providedIn</code>这个字段表示我们的服务可以被那些组件所使用，默认为根组件及其子组件，也可以改为其他子模块。添加之后就把该服务<code>MyService</code>添加到了<strong>依赖注入系统</strong>之中，这样在别的组建或者服务中就可以注入我们导出的服务<code>MyService</code>。</p>
 <p>然后在别的组件内部导入服务并使用，代码如下：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; MyService &#125; <span class="keyword">from</span> <span class="string">'../my.service'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="string">'app'</span>,</span><br><span class="line">  templateUrl: <span class="string">'./app.component.html'</span>,</span><br><span class="line">  styleUrls: [<span class="string">'./app.component.css'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line">	datas:<span class="built_in">any</span>;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> myService: MyService</span>) &#123; &#125;</span><br><span class="line">  </span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">    <span class="keyword">this</span>.getData();</span><br><span class="line">  &#125;</span><br><span class="line">	getData(): <span class="built_in">void</span> &#123;</span><br><span class="line">		<span class="keyword">this</span>.datas = <span class="keyword">this</span>.myService.getDatas();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>导入我们的服务<code>MyService</code>，在<code>constructor</code>中注入我们的服务，在<code>ngOnInit</code>中调用方法来获取服务内部的数据。这样三步就完成了服务的使用。<br>其中<code>constructor(private myService: MyService)</code>为我们当前组件注入了一个服务，并将其声明为<strong>私有变量</strong>（<code>myService</code>),<strong>不可在直接在当前组件的模板页面中进行绑定</strong>，只有<code>public</code>和<code>protected</code>类型的变量才可以直接在模板页面使用。</p>
+<p>导入我们的服务<code>MyService</code>，在<code>constructor</code>中注入我们的服务，在<code>ngOnInit</code>中调用方法来获取服务内部的数据。这样三步就完成了服务的使用。<br>其中<code>constructor(private myService: MyService)</code>为我们当前组件注入了一个服务，并将其声明为<strong>私有变量</strong>（<code>myService</code>),<strong>不可在直接在当前组件的模板页面中进行绑定</strong>，只有<code>public</code>和<code>protected</code>类型的变量才可以直接在模板页面使用。想多了解关于<code>ngOnInit</code>的一些知识，可以<strong><a href="/2018/06/12/angular-lifecycle-hooks/">点击</a></strong>了解<code>Angular</code>组件的生命周期及其相关的hooks事件。</p>
 
       
 
@@ -282,6 +282,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/06/13/angular-router/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Angular路由
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/12/angular-lifecycle-hooks/" id="article-nav-older" class="article-nav-link-wrap">
@@ -419,11 +428,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">service</a>
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">service</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -439,11 +452,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dom</a>
+                <a href="javascript:void(0)" class="js-tag color4">function</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">api</a>
+                <a href="javascript:void(0)" class="js-tag color1">apply</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">call</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,15 +484,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">function</a>
+                <a href="javascript:void(0)" class="js-tag color4">dom</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">apply</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">call</a>
+                <a href="javascript:void(0)" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
