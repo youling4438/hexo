@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://youling4438.github.io/hexo">
-  <title>Archives: 2018/6 | 修罗战场</title>
+  <title>Angular服务 | 修罗战场</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="汇集前端开发的知识点">
-<meta property="og:type" content="website">
-<meta property="og:title" content="修罗战场">
-<meta property="og:url" content="https://youling4438.github.io/hexo/archives/2018/06/index.html">
+  <meta name="description" content="今天总结一下Angular框架中服务的一些知识。 1.为什么需要服务在Angular中最常用的就是Component(组件)。组件通常会通过一些自定义的指令去接受一些数据，并在组件内部进行逻辑处理。但事实上这样做并不合理，因为组件不应该直接获取数据，也不应该关心自己展示的数据是真实的还是模拟的假数据。组件仅仅只需要展示数据就可以了，获取和处理数据的工作让服务来完成就可以了。 而且服务也是让多个类之">
+<meta name="keywords" content="Angular,js,javascript,service">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular服务">
+<meta property="og:url" content="https://youling4438.github.io/hexo/2018/06/13/angular-services/index.html">
 <meta property="og:site_name" content="修罗战场">
-<meta property="og:description" content="汇集前端开发的知识点">
+<meta property="og:description" content="今天总结一下Angular框架中服务的一些知识。 1.为什么需要服务在Angular中最常用的就是Component(组件)。组件通常会通过一些自定义的指令去接受一些数据，并在组件内部进行逻辑处理。但事实上这样做并不合理，因为组件不应该直接获取数据，也不应该关心自己展示的数据是真实的还是模拟的假数据。组件仅仅只需要展示数据就可以了，获取和处理数据的工作让服务来完成就可以了。 而且服务也是让多个类之">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-13T03:17:01.306Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="修罗战场">
-<meta name="twitter:description" content="汇集前端开发的知识点">
+<meta name="twitter:title" content="Angular服务">
+<meta name="twitter:description" content="今天总结一下Angular框架中服务的一些知识。 1.为什么需要服务在Angular中最常用的就是Component(组件)。组件通常会通过一些自定义的指令去接受一些数据，并在组件内部进行逻辑处理。但事实上这样做并不合理，因为组件不应该直接获取数据，也不应该关心自己展示的数据是真实的还是模拟的假数据。组件仅仅只需要展示数据就可以了，获取和处理数据的工作让服务来完成就可以了。 而且服务也是让多个类之">
   
     <link rel="alternative" href="/atom.xml" title="修罗战场" type="application/atom+xml">
   
@@ -156,36 +158,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-angular-services" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/13/angular-services/" class="archive-article-date">
-  	<time datetime="2018-06-13T02:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/13/angular-services/">Angular服务</a>
+    <h1 class="article-title" itemprop="name">
+      Angular服务
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/06/13/angular-services/" class="archive-article-date">
+  	<time datetime="2018-06-13T02:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天总结一下<code>Angular</code>框架中服务的一些知识。</p>
+<h3 id="1-为什么需要服务"><a href="#1-为什么需要服务" class="headerlink" title="1.为什么需要服务"></a>1.为什么需要服务</h3><p>在<code>Angular</code>中最常用的就是<code>Component</code>(组件)。组件通常会通过一些自定义的指令去接受一些数据，并在组件内部进行逻辑处理。但事实上这样做并不合理，因为组件不应该直接获取数据，也不应该关心自己展示的数据是真实的还是模拟的假数据。组件仅仅只需要<strong>展示数据</strong>就可以了，获取和处理数据的工作让<strong>服务</strong>来完成就可以了。</p>
+<p>而且服务也是让多个类之间实现<strong>数据共享</strong>的一种方法。</p>
+<a id="more"></a>
+<h3 id="2-如何使用服务"><a href="#2-如何使用服务" class="headerlink" title="2.如何使用服务"></a>2.如何使用服务</h3><p>首先，创建一个服务，代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Injectable &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span>(&#123;</span><br><span class="line">  providedIn: <span class="string">'root'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> MyService &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"></span>) &#123; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>服务的核心骨架如上代码所示。我们先导入了<code>Injectable</code>,添加了相应的装饰器<code>@Injectable()</code>。其中<code>providedIn</code>这个字段表示我们的服务可以被那些组件所使用，默认为根组件及其子组件，也可以改为其他子模块。添加之后就把该服务<code>MyService</code>添加到了<strong>依赖注入系统</strong>之中，这样在别的组建或者服务中就可以注入我们导出的服务<code>MyService</code>。</p>
+<p>然后在别的组件内部导入服务并使用，代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; MyService &#125; <span class="keyword">from</span> <span class="string">'../my.service'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="string">'app'</span>,</span><br><span class="line">  templateUrl: <span class="string">'./app.component.html'</span>,</span><br><span class="line">  styleUrls: [<span class="string">'./app.component.css'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppComponent <span class="keyword">implements</span> OnInit &#123;</span><br><span class="line">	datas:<span class="built_in">any</span>;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> myService: MyService</span>) &#123; &#125;</span><br><span class="line">  </span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">    <span class="keyword">this</span>.getData();</span><br><span class="line">  &#125;</span><br><span class="line">	getData(): <span class="built_in">void</span> &#123;</span><br><span class="line">		<span class="keyword">this</span>.datas = <span class="keyword">this</span>.myService.getDatas();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>导入我们的服务<code>MyService</code>，在<code>constructor</code>中注入我们的服务，在<code>ngOnInit</code>中调用方法来获取服务内部的数据。这样三步就完成了服务的使用。<br>其中<code>constructor(private myService: MyService)</code>为我们当前组件注入了一个服务，并将其声明为<strong>私有变量</strong>（<code>myService</code>),<strong>不可在直接在当前组件的模板页面中进行绑定</strong>，只有<code>public</code>和<code>protected</code>类型的变量才可以直接在模板页面使用。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -209,69 +219,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://youling4438.github.io/hexo/2018/06/13/angular-services/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/12/angular-lifecycle-hooks/" class="archive-article-date">
-  	<time datetime="2018-06-12T09:17:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/12/angular-lifecycle-hooks/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Angular生命周期</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/12/angular-lifecycle-hooks/">Angular生命周期</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hooks</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -294,8 +341,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
