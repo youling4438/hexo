@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="修罗战场">
 <meta property="og:description" content="最近学习如何使用redux-saga，零零散散的记录一些关于saga的知识。 1. redux-saga相关官方相关描述1.redux-saga是一个用于管理redux应用异步操作的中间件。 2.redux-saga 通过创建 Sagas 将所有的异步操作逻辑收集在一个地方集中处理。PS: 目前我碰到的异步操作就只有发请求，比如下面这样：1234567891011fetch(&apos;https://v1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-18T13:34:05.837Z">
+<meta property="og:updated_time" content="2018-12-18T14:06:56.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="learn-redux-sagas">
 <meta name="twitter:description" content="最近学习如何使用redux-saga，零零散散的记录一些关于saga的知识。 1. redux-saga相关官方相关描述1.redux-saga是一个用于管理redux应用异步操作的中间件。 2.redux-saga 通过创建 Sagas 将所有的异步操作逻辑收集在一个地方集中处理。PS: 目前我碰到的异步操作就只有发请求，比如下面这样：1234567891011fetch(&apos;https://v1">
@@ -185,6 +185,9 @@
 <p>3.有<code>Sagas</code>之后，<code>react</code>应用的逻辑处理会放在以下地方：<br>    1). Reducers 负责处理 action 的 state 更新。<br>    2). Sagas 负责协调那些复杂或异步的操作。</p>
 <p>4.<code>Sagas</code>是通过<code>ES6</code>中的<code>Generator</code>函数来创建的。</p>
 <p>5.<code>Thunks</code> 是在 <code>action</code> 被创建时调用，而 <code>Sagas</code> 只会在应用启动时调用。</p>
+<p>6.<code>Sagas</code> 监听发起的 action，然后决定基于这个 action 来做什么。</p>
+<p>7.使用了<code>Generator</code>，<code>redux-saga</code> 让你可以用同步的方式写异步代码。</p>
+<p>8.<code>redux-saga</code>可以随时手动取消任务，也可以把任务和其他的<code>Effects</code>放到<code>race</code>方法里以自动取消。</p>
 
       
 
