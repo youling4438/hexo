@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="修罗战场">
 <meta property="og:description" content="路由是在不同组件之间导航，实现跳转功能的一个模块，一般都在顶级模块中加载，并配置路由信息。为实现路由功能，我们需要先创建路由模块，完成路由配置，在别的模块(一般是根模块)引入路由模块，然后配置路由出口与路由链接，这样路由功能就基本完成。那么接下来详细看看每一步如何操作。 1.创建路由模块创建路由模块的核心代码如下： 12345678import &amp;#123; NgModule &amp;#125;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-13T12:10:48.780Z">
+<meta property="og:updated_time" content="2018-06-13T12:12:50.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular路由">
 <meta name="twitter:description" content="路由是在不同组件之间导航，实现跳转功能的一个模块，一般都在顶级模块中加载，并配置路由信息。为实现路由功能，我们需要先创建路由模块，完成路由配置，在别的模块(一般是根模块)引入路由模块，然后配置路由出口与路由链接，这样路由功能就基本完成。那么接下来详细看看每一步如何操作。 1.创建路由模块创建路由模块的核心代码如下： 12345678import &amp;#123; NgModule &amp;#125;">
@@ -188,10 +188,10 @@
 <h3 id="3-引入路由模块"><a href="#3-引入路由模块" class="headerlink" title="3.引入路由模块"></a>3.引入路由模块</h3><p>在根模块中导入路由模块，要添加的核心代码如下：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; AppRoutingModule &#125;     <span class="keyword">from</span> <span class="string">'./app-routing.module'</span>;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  imports: [  AppRoutingModule ],</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppModule &#123;&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="4-路由出口与链接"><a href="#4-路由出口与链接" class="headerlink" title="4.路由出口与链接"></a>4.路由出口与链接</h3><p>当路由器渲染了某一个组件之后，在视图哪里呈现呢？在路由出口里面，就是<code>&lt;router-outlet&gt;&lt;/router-outlet&gt;</code>,添加到模板页面里相应的位置即可，路由出口是用来呈现路由最终渲染的组件的一个平台(容器)。再看一段视图模板的代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">routerLink</span>=<span class="string">"/a"</span>&gt;</span>a<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">routerLink</span>=<span class="string">"/b"</span>&gt;</span>b<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-outlet</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>如上代码所示，<code>routerLink</code>表示点击之后路由的跳转链接，路由器监听到url变化，进行路由匹配，然后渲染匹配到的组件，最终在<router-outlet>标签所在的位置呈现出来。至此，路由功能完毕。</router-outlet></p>
+<p>如上代码所示，<code>routerLink</code>表示点击之后路由的跳转链接，路由器监听到url变化，进行路由匹配，然后渲染匹配到的组件，最终在<code>&lt;router-outlet&gt;</code>标签所在的位置呈现出来。至此，路由功能完毕。</p>
 <h3 id="5-组件如何接受路由参数"><a href="#5-组件如何接受路由参数" class="headerlink" title="5.组件如何接受路由参数"></a>5.组件如何接受路由参数</h3><p>额外说一点，组件是如何接受路由携带的参数的，直接看需要给组件额外添加核心代码：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ActivatedRoute &#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line">id:<span class="built_in">String</span></span><br><span class="line"><span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> route: ActivatedRoute</span>) &#123;&#125;</span><br><span class="line">ngOnInit(): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.getId();</span><br><span class="line">&#125;</span><br><span class="line">getId(): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.id = <span class="keyword">this</span>.route.snapshot.paramMap.get(<span class="string">'id'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>给组件引入<code>ActivatedRoute</code>，和注入服务一样的方法，我们在构造函数内部注册该路由，并设置为私有变量route,<code>route.snapshot</code>是一个路由信息的静态快照，抓取自组件刚刚创建完毕之后。<code>paramMap</code>是一个从URL中提取的路由参数值的字典。”id” 对应的值就是要获取的参数id。通过<code>getId</code>这个方法，我们就可以获得通过路由传入的参数了。</p>
+<p>给组件引入<code>ActivatedRoute</code>，和注入服务一样的方法，我们在构造函数内部注册该路由，并设置为私有变量route,<code>route.snapshot</code>是一个路由信息的静态快照，抓取自组件刚刚创建完毕之后。<code>paramMap</code>是一个从URL中提取的路由参数值的字典。”id” 对应的值就是要获取的参数id。通过<code>getId()</code>这个方法，我们就可以获得通过路由传入的参数了。</p>
 
       
 
@@ -286,6 +286,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/12/18/learn-redux-sagas/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          learn-redux-sagas
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/13/angular-services/" id="article-nav-older" class="article-nav-link-wrap">
@@ -423,15 +432,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hooks</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">service</a>
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -444,6 +449,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ES5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">service</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,6 +497,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">saga</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
             
             <div class="clearfix"></div>
