@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://youling4438.github.io/hexo">
   <title>修罗战场</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -41,7 +41,7 @@
     $youziku.load(".intrude-less,.tools-col", "fd8fe17a501e482b8c8638e8a376d2df", "jdzhonyuanjian");
     $youziku.draw();
   </script>
-</head>
+</head></html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -157,6 +157,95 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-javascript-inherit" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/12/javascript-inherit/">javascript中的继承方法总结</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/12/javascript-inherit/" class="archive-article-date">
+  	<time datetime="2018-03-12T02:15:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近学习了js中的OOP(面向对象编程)思想，OOP中的三大特性分别是 <strong><a href="/2018/03/13/javascript-encapsulation/">封装</a></strong>、<strong>继承</strong>、<strong>多态</strong> 。今天先总结一下 <strong>继承</strong> 的一些方法。</p>
+<p>在js中继承分为 <strong>构造函数继承</strong> 和 <strong>非构造函数继承</strong> 两种模式。为了方便理解继承，我们需要用到两个完成封装的类，<code>father</code>和<code>son</code>分别如下：<br>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">father</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.lastName = <span class="string">"张"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">son</span>(<span class="params">name,hobbies</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.firstName = name;</span><br><span class="line">  <span class="keyword">this</span>.hobbies = hobbies;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h2><h3 id="1-构造函数绑定"><a href="#1-构造函数绑定" class="headerlink" title="1.构造函数绑定"></a>1.构造函数绑定</h3><p>  这个方法是最简单的，直接在子类身上 <em>绑定</em> 父类的构造函数即可。那么如何实现 <em>绑定</em> 这一操作呢？</p>
+<p>  在js中的每一个<code>function</code>对象都有两个方法:<code>apply()</code>和<code>call()</code>，这两个方法的第一个参数指的是方法内部的<code>this</code>指向那个对象。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//子类修改如下即可</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">son</span>(<span class="params">name,hobbies</span>)</span>&#123;</span><br><span class="line">  father.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);<span class="comment">//this指向son，实现绑定</span></span><br><span class="line">  <span class="keyword">this</span>.firstName = name;</span><br><span class="line">  <span class="keyword">this</span>.hobbies = hobbies;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  上面的实例中<code>son</code>对象继承了<code>father</code>对象，<code>son</code>的实例化对象拥有<code>lastName</code>这个属性，如下：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> son(<span class="string">"琦"</span>,[<span class="string">"music"</span>,<span class="string">"CSS3"</span>,<span class="string">"poetry"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s.lastName); <span class="comment">//"张"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>So easy!!!</strong></p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2018/03/12/javascript-inherit/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/12/javascript-inherit/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-my-first-post" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -436,11 +525,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hooks</a>
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
+                <a href="javascript:void(0)" class="js-tag color1">hooks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,10 +569,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redux</a>
               </li>
              
@@ -493,6 +578,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gulp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">task</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,6 +606,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
             
             <div class="clearfix"></div>
